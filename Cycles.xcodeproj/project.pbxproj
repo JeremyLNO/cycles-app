@@ -1,0 +1,528 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BA0000000000000000000001 /* CyclesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0000000000000000000001 /* CyclesApp.swift */; };
+		BA0000000000000000000002 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0000000000000000000002 /* HomeView.swift */; };
+		BA0000000000000000000003 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0000000000000000000003 /* CalendarView.swift */; };
+		BA0000000000000000000004 /* ProfilesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0000000000000000000004 /* ProfilesView.swift */; };
+		BA0000000000000000000005 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0000000000000000000005 /* SettingsView.swift */; };
+		BA0000000000000000000006 /* LogPeriodSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0000000000000000000006 /* LogPeriodSheet.swift */; };
+		BA0000000000000000000007 /* AppLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0000000000000000000007 /* AppLock.swift */; };
+		BA0000000000000000000008 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0000000000000000000008 /* NotificationManager.swift */; };
+		BA0000000000000000000009 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0000000000000000000009 /* Models.swift */; };
+		BA000000000000000000000A /* CycleEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000001 /* CycleEngine.swift */; };
+		BA000000000000000000000B /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000002 /* Palette.swift */; };
+		BA000000000000000000000C /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000003 /* Components.swift */; };
+		BA000000000000000000000D /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000004 /* Localization.swift */; };
+		BA000000000000000000000E /* SharedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000005 /* SharedStore.swift */; };
+		BA000000000000000000000F /* WidgetContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000006 /* WidgetContent.swift */; };
+		BA0000000000000000000012 /* HealthTips.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0000000000000000000012 /* HealthTips.swift */; };
+		BA0000000000000000000013 /* DayLogSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0000000000000000000013 /* DayLogSheet.swift */; };
+		BA0000000000000000000014 /* InsightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0000000000000000000014 /* InsightsView.swift */; };
+		BA0000000000000000000010 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC0000000000000000000010 /* Assets.xcassets */; };
+		BA0000000000000000000011 /* CyclesWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = CC0000000000000000000002 /* CyclesWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BD0000000000000000000001 /* CyclesWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0000000000000000000001 /* CyclesWidget.swift */; };
+		BD0000000000000000000002 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000002 /* Palette.swift */; };
+		BD0000000000000000000003 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000004 /* Localization.swift */; };
+		BD0000000000000000000004 /* SharedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000005 /* SharedStore.swift */; };
+		BD0000000000000000000005 /* WidgetContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000006 /* WidgetContent.swift */; };
+		BD0000000000000000000006 /* CycleEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000001 /* CycleEngine.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		11000000000000000000A2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA0000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BB0000000000000000000002;
+			remoteInfo = CyclesWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FF0000000000000000000003 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				BA0000000000000000000011 /* CyclesWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		AB0000000000000000000001 /* CycleEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CycleEngine.swift; sourceTree = "<group>"; };
+		AB0000000000000000000002 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
+		AB0000000000000000000003 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		AB0000000000000000000004 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		AB0000000000000000000005 /* SharedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedStore.swift; sourceTree = "<group>"; };
+		AB0000000000000000000006 /* WidgetContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetContent.swift; sourceTree = "<group>"; };
+		AC0000000000000000000001 /* CyclesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CyclesApp.swift; sourceTree = "<group>"; };
+		AC0000000000000000000002 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		AC0000000000000000000003 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		AC0000000000000000000004 /* ProfilesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilesView.swift; sourceTree = "<group>"; };
+		AC0000000000000000000005 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		AC0000000000000000000006 /* LogPeriodSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogPeriodSheet.swift; sourceTree = "<group>"; };
+		AC0000000000000000000007 /* AppLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLock.swift; sourceTree = "<group>"; };
+		AC0000000000000000000008 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		AC0000000000000000000009 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		AC0000000000000000000012 /* HealthTips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTips.swift; sourceTree = "<group>"; };
+		AC0000000000000000000013 /* DayLogSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayLogSheet.swift; sourceTree = "<group>"; };
+		AC0000000000000000000014 /* InsightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightsView.swift; sourceTree = "<group>"; };
+		AC0000000000000000000010 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AC0000000000000000000011 /* Cycles.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Cycles.entitlements; sourceTree = "<group>"; };
+		AD0000000000000000000001 /* CyclesWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CyclesWidget.swift; sourceTree = "<group>"; };
+		AD0000000000000000000002 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD0000000000000000000003 /* CyclesWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CyclesWidget.entitlements; sourceTree = "<group>"; };
+		CC0000000000000000000001 /* Cycles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cycles.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC0000000000000000000002 /* CyclesWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CyclesWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FF0000000000000000000004 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF0000000000000000000006 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AA0000000000000000000002 = {
+			isa = PBXGroup;
+			children = (
+				AC00000000000000000000F0 /* Cycles */,
+				AD00000000000000000000F0 /* CyclesWidget */,
+				AB00000000000000000000F0 /* Shared */,
+				AA0000000000000000000003 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AA0000000000000000000003 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CC0000000000000000000001 /* Cycles.app */,
+				CC0000000000000000000002 /* CyclesWidgetExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AB00000000000000000000F0 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				AB0000000000000000000001 /* CycleEngine.swift */,
+				AB0000000000000000000002 /* Palette.swift */,
+				AB0000000000000000000003 /* Components.swift */,
+				AB0000000000000000000004 /* Localization.swift */,
+				AB0000000000000000000005 /* SharedStore.swift */,
+				AB0000000000000000000006 /* WidgetContent.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		AC00000000000000000000F0 /* Cycles */ = {
+			isa = PBXGroup;
+			children = (
+				AC0000000000000000000001 /* CyclesApp.swift */,
+				AC0000000000000000000002 /* HomeView.swift */,
+				AC0000000000000000000003 /* CalendarView.swift */,
+				AC0000000000000000000004 /* ProfilesView.swift */,
+				AC0000000000000000000005 /* SettingsView.swift */,
+				AC0000000000000000000006 /* LogPeriodSheet.swift */,
+				AC0000000000000000000007 /* AppLock.swift */,
+				AC0000000000000000000008 /* NotificationManager.swift */,
+				AC0000000000000000000009 /* Models.swift */,
+				AC0000000000000000000012 /* HealthTips.swift */,
+				AC0000000000000000000013 /* DayLogSheet.swift */,
+				AC0000000000000000000014 /* InsightsView.swift */,
+				AC0000000000000000000010 /* Assets.xcassets */,
+				AC0000000000000000000011 /* Cycles.entitlements */,
+			);
+			path = Cycles;
+			sourceTree = "<group>";
+		};
+		AD00000000000000000000F0 /* CyclesWidget */ = {
+			isa = PBXGroup;
+			children = (
+				AD0000000000000000000001 /* CyclesWidget.swift */,
+				AD0000000000000000000002 /* Info.plist */,
+				AD0000000000000000000003 /* CyclesWidget.entitlements */,
+			);
+			path = CyclesWidget;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BB0000000000000000000001 /* Cycles */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DD0000000000000000000002 /* Build configuration list for PBXNativeTarget "Cycles" */;
+			buildPhases = (
+				FF0000000000000000000001 /* Sources */,
+				FF0000000000000000000004 /* Frameworks */,
+				FF0000000000000000000002 /* Resources */,
+				FF0000000000000000000003 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				11000000000000000000A1 /* PBXTargetDependency */,
+			);
+			name = Cycles;
+			productName = Cycles;
+			productReference = CC0000000000000000000001 /* Cycles.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BB0000000000000000000002 /* CyclesWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DD0000000000000000000003 /* Build configuration list for PBXNativeTarget "CyclesWidget" */;
+			buildPhases = (
+				FF0000000000000000000005 /* Sources */,
+				FF0000000000000000000006 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CyclesWidget;
+			productName = CyclesWidgetExtension;
+			productReference = CC0000000000000000000002 /* CyclesWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AA0000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2650;
+				LastUpgradeCheck = 2650;
+				TargetAttributes = {
+					BB0000000000000000000001 = {
+						CreatedOnToolsVersion = 26.5;
+					};
+					BB0000000000000000000002 = {
+						CreatedOnToolsVersion = 26.5;
+					};
+				};
+			};
+			buildConfigurationList = DD0000000000000000000001 /* Build configuration list for PBXProject "Cycles" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AA0000000000000000000002;
+			productRefGroup = AA0000000000000000000003 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BB0000000000000000000001 /* Cycles */,
+				BB0000000000000000000002 /* CyclesWidget */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FF0000000000000000000002 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA0000000000000000000010 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FF0000000000000000000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA0000000000000000000001 /* CyclesApp.swift in Sources */,
+				BA0000000000000000000002 /* HomeView.swift in Sources */,
+				BA0000000000000000000003 /* CalendarView.swift in Sources */,
+				BA0000000000000000000004 /* ProfilesView.swift in Sources */,
+				BA0000000000000000000005 /* SettingsView.swift in Sources */,
+				BA0000000000000000000006 /* LogPeriodSheet.swift in Sources */,
+				BA0000000000000000000007 /* AppLock.swift in Sources */,
+				BA0000000000000000000008 /* NotificationManager.swift in Sources */,
+				BA0000000000000000000009 /* Models.swift in Sources */,
+				BA000000000000000000000A /* CycleEngine.swift in Sources */,
+				BA000000000000000000000B /* Palette.swift in Sources */,
+				BA000000000000000000000C /* Components.swift in Sources */,
+				BA000000000000000000000D /* Localization.swift in Sources */,
+				BA000000000000000000000E /* SharedStore.swift in Sources */,
+				BA000000000000000000000F /* WidgetContent.swift in Sources */,
+				BA0000000000000000000012 /* HealthTips.swift in Sources */,
+				BA0000000000000000000013 /* DayLogSheet.swift in Sources */,
+				BA0000000000000000000014 /* InsightsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF0000000000000000000005 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD0000000000000000000001 /* CyclesWidget.swift in Sources */,
+				BD0000000000000000000002 /* Palette.swift in Sources */,
+				BD0000000000000000000003 /* Localization.swift in Sources */,
+				BD0000000000000000000004 /* SharedStore.swift in Sources */,
+				BD0000000000000000000005 /* WidgetContent.swift in Sources */,
+				BD0000000000000000000006 /* CycleEngine.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		11000000000000000000A1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BB0000000000000000000002 /* CyclesWidget */;
+			targetProxy = 11000000000000000000A2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		EE0000000000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		EE0000000000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EE0000000000000000000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Cycles/Cycles.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2E6D4Q69QB;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Cycles;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Cycles uses Face ID to keep your cycle data private.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = company.lno.cycles;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EE0000000000000000000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Cycles/Cycles.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2E6D4Q69QB;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Cycles;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Cycles uses Face ID to keep your cycle data private.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = company.lno.cycles;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EE0000000000000000000005 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CyclesWidget/CyclesWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2E6D4Q69QB;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = CyclesWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = company.lno.cycles.CyclesWidget;
+				PRODUCT_NAME = CyclesWidgetExtension;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EE0000000000000000000006 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CyclesWidget/CyclesWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2E6D4Q69QB;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = CyclesWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = company.lno.cycles.CyclesWidget;
+				PRODUCT_NAME = CyclesWidgetExtension;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DD0000000000000000000001 /* Build configuration list for PBXProject "Cycles" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE0000000000000000000001 /* Debug */,
+				EE0000000000000000000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DD0000000000000000000002 /* Build configuration list for PBXNativeTarget "Cycles" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE0000000000000000000003 /* Debug */,
+				EE0000000000000000000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DD0000000000000000000003 /* Build configuration list for PBXNativeTarget "CyclesWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE0000000000000000000005 /* Debug */,
+				EE0000000000000000000006 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AA0000000000000000000001 /* Project object */;
+}
