@@ -236,5 +236,34 @@ enum L {
         "chart_mood":         [.en: "Mood trend", .fr: "Tendance de l'humeur", .es: "Tendencia del ánimo", .de: "Stimmungsverlauf", .pt: "Tendência do humor"],
         "chart_symptoms":     [.en: "Frequent symptoms", .fr: "Symptômes fréquents", .es: "Síntomas frecuentes", .de: "Häufige Symptome", .pt: "Sintomas frequentes"],
         "chart_average":      [.en: "Avg", .fr: "Moy.", .es: "Med.", .de: "Ø", .pt: "Méd."],
+
+        // MARK: Account
+        "account_section":       [.en: "Account", .fr: "Compte", .es: "Cuenta", .de: "Konto", .pt: "Conta"],
+        "account_title":         [.en: "My account", .fr: "Mon compte", .es: "Mi cuenta", .de: "Mein Konto", .pt: "A minha conta"],
+        "account_signin":        [.en: "Sign in", .fr: "Se connecter", .es: "Iniciar sesión", .de: "Anmelden", .pt: "Iniciar sessão"],
+        "account_signin_intro":  [.en: "An account is optional — your data stays on your device and syncs via iCloud.", .fr: "Le compte est optionnel : tes données restent sur ton appareil et se synchronisent via iCloud.", .es: "La cuenta es opcional: tus datos permanecen en tu dispositivo y se sincronizan con iCloud.", .de: "Ein Konto ist optional – deine Daten bleiben auf dem Gerät und werden über iCloud synchronisiert.", .pt: "A conta é opcional — os teus dados ficam no dispositivo e sincronizam via iCloud."],
+        "account_more_soon":     [.en: "Google and email coming soon", .fr: "Google et e-mail bientôt", .es: "Google y correo pronto", .de: "Google und E-Mail folgen bald", .pt: "Google e e-mail em breve"],
+        "account_apple_user":    [.en: "Apple user", .fr: "Utilisateur Apple", .es: "Usuario de Apple", .de: "Apple-Nutzer", .pt: "Utilizador Apple"],
+        "account_via_apple":     [.en: "Signed in with Apple", .fr: "Connecté avec Apple", .es: "Conectado con Apple", .de: "Mit Apple angemeldet", .pt: "Ligado com a Apple"],
+        "account_signout":       [.en: "Sign out", .fr: "Se déconnecter", .es: "Cerrar sesión", .de: "Abmelden", .pt: "Terminar sessão"],
+        "account_delete":        [.en: "Delete account & data", .fr: "Supprimer mon compte et mes données", .es: "Eliminar cuenta y datos", .de: "Konto & Daten löschen", .pt: "Eliminar conta e dados"],
+        "account_delete_q":      [.en: "Delete permanently?", .fr: "Supprimer définitivement ?", .es: "¿Eliminar definitivamente?", .de: "Endgültig löschen?", .pt: "Eliminar definitivamente?"],
+        "account_delete_msg":    [.en: "All your data will be erased from this device and iCloud. This cannot be undone.", .fr: "Toutes tes données seront effacées de cet appareil et d'iCloud. Action irréversible.", .es: "Todos tus datos se borrarán de este dispositivo y de iCloud. No se puede deshacer.", .de: "Alle deine Daten werden von diesem Gerät und aus iCloud gelöscht. Nicht rückgängig machbar.", .pt: "Todos os teus dados serão apagados deste dispositivo e do iCloud. Ação irreversível."],
+        "account_delete_footer": [.en: "Deletion permanently erases all your data (device + iCloud). Nothing is kept on a server.", .fr: "La suppression efface définitivement toutes tes données (appareil + iCloud). Rien n'est conservé sur un serveur.", .es: "La eliminación borra permanentemente todos tus datos (dispositivo + iCloud). No se guarda nada en un servidor.", .de: "Das Löschen entfernt dauerhaft alle Daten (Gerät + iCloud). Nichts wird auf einem Server gespeichert.", .pt: "A eliminação apaga definitivamente todos os teus dados (dispositivo + iCloud). Nada fica num servidor."],
+
+
+        // MARK: Legal & sync
+        "privacy_policy": [.en: "Privacy Policy", .fr: "Politique de confidentialité", .es: "Política de privacidad", .de: "Datenschutzerklärung", .pt: "Política de privacidade"],
+        "terms_of_use":   [.en: "Terms of Use", .fr: "Conditions d'utilisation", .es: "Términos de uso", .de: "Nutzungsbedingungen", .pt: "Termos de utilização"],
+        "sync_status_off": [.en: "Sign in to iCloud in device Settings to sync your data.", .fr: "Connecte-toi à iCloud dans les Réglages de l'appareil pour synchroniser tes données.", .es: "Inicia sesión en iCloud en los Ajustes del dispositivo para sincronizar tus datos.", .de: "Melde dich in den Geräte-Einstellungen bei iCloud an, um deine Daten zu synchronisieren.", .pt: "Inicia sessão no iCloud nas Definições do dispositivo para sincronizar os teus dados."],
+
+        // MARK: Commitment (why Cycles is free)
+        "continue":        [.en: "Continue", .fr: "Continuer", .es: "Continuar", .de: "Weiter", .pt: "Continuar"],
+        "free_title":      [.en: "Cycles is 100% free", .fr: "Cycles est 100 % gratuite", .es: "Cycles es 100 % gratuita", .de: "Cycles ist 100 % kostenlos", .pt: "O Cycles é 100% gratuito"],
+        "free_intro":      [.en: "Crazy Bee Labs is committed to keeping its wellness apps — Cycles, Pillo and Respire — free, so taking care of yourself stays within everyone's reach.", .fr: "Crazy Bee Labs s'engage à garder ses apps bien-être — Cycles, Pillo et Respire — gratuites, pour que prendre soin de soi reste accessible à toutes.", .es: "Crazy Bee Labs se compromete a mantener gratuitas sus apps de bienestar —Cycles, Pillo y Respire— para que cuidarse siga al alcance de todas.", .de: "Crazy Bee Labs verpflichtet sich, seine Wohlfühl-Apps – Cycles, Pillo und Respire – kostenlos zu halten, damit Selbstfürsorge für alle zugänglich bleibt.", .pt: "A Crazy Bee Labs compromete-se a manter as suas apps de bem-estar — Cycles, Pillo e Respire — gratuitas, para que cuidar de si continue ao alcance de todas."],
+        "free_row_ads":    [.en: "No ads, no subscription — ever.", .fr: "Sans publicité ni abonnement, jamais.", .es: "Sin anuncios ni suscripción, nunca.", .de: "Keine Werbung, kein Abo – niemals.", .pt: "Sem anúncios nem subscrição, nunca."],
+        "free_row_privacy":[.en: "Your health data stays private, on your device and iCloud.", .fr: "Tes données de santé restent privées, sur ton appareil et ton iCloud.", .es: "Tus datos de salud permanecen privados, en tu dispositivo e iCloud.", .de: "Deine Gesundheitsdaten bleiben privat, auf deinem Gerät und in iCloud.", .pt: "Os teus dados de saúde ficam privados, no teu dispositivo e no iCloud."],
+        "free_row_suite":  [.en: "Brought to you by Crazy Bee Labs, alongside Pillo and Respire.", .fr: "Offerte par Crazy Bee Labs, aux côtés de Pillo et Respire.", .es: "Ofrecida por Crazy Bee Labs, junto a Pillo y Respire.", .de: "Präsentiert von Crazy Bee Labs, zusammen mit Pillo und Respire.", .pt: "Oferecida pela Crazy Bee Labs, ao lado de Pillo e Respire."],
+        "free_link":       [.en: "Our commitment", .fr: "Notre engagement", .es: "Nuestro compromiso", .de: "Unser Versprechen", .pt: "O nosso compromisso"],
     ]
 }

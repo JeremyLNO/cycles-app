@@ -12,9 +12,14 @@ struct SettingsView: View {
     @AppStorage("lock.enabled") private var lockEnabled = false
     @AppStorage("default.cycleLength") private var defaultCycle = CycleEngine.defaultCycle
 
+    @EnvironmentObject private var account: AccountManager
+    @State private var showAccountSheet = false
+    @State private var showCommitment = false
+
     private var lang: AppLanguage { AppLanguage(rawValue: languageRaw) ?? .en }
 
     private var iCloudOn: Bool { FileManager.default.ubiquityIdentityToken != nil }
+    private var privacyURL: URL { URL(string: "https://www.crazybeelabs.com/privacy-policy/")! }
     private var appVersion: String {
         Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0"
     }
@@ -42,6 +47,16 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             Form {
+                // Account & Premium
+                Section(L.t("account_section", lang)) {
+                    NavigationLink {
+                        AccountView()
+                    } label: {
+                        Label(account.isSignedIn ? (account.displayName.isEmpty ? L.t("account_apple_user", lang) : account.displayName) : L.t("account_signin", lang),
+                              systemImage: "person.crop.circle.fill")
+                    }
+                }
+
                 // People
                 Section(L.t("settings_people", lang)) {
                     NavigationLink {
@@ -92,7 +107,7 @@ struct SettingsView: View {
                         Image(systemName: iCloudOn ? "checkmark.circle.fill" : "exclamationmark.circle")
                             .foregroundStyle(iCloudOn ? .green : Palette.sub)
                     }
-                    Text(L.t("sync_status_on", lang))
+                    Text(iCloudOn ? L.t("sync_status_on", lang) : L.t("sync_status_off", lang))
                         .font(.caption).foregroundStyle(Palette.sub)
                 }
 
@@ -100,6 +115,16 @@ struct SettingsView: View {
                 Section(L.t("settings_about", lang)) {
                     Link(destination: supportURL) {
                         Label(L.t("settings_support", lang), systemImage: "lightbulb.fill")
+                            .foregroundStyle(Palette.rose)
+                    }
+                    Link(destination: privacyURL) {
+                        Label(L.t("privacy_policy", lang), systemImage: "hand.raised.fill")
+                            .foregroundStyle(Palette.rose)
+                    }
+                    Button {
+                        showCommitment = true
+                    } label: {
+                        Label(L.t("free_link", lang), systemImage: "gift.fill")
                             .foregroundStyle(Palette.rose)
                     }
                     HStack {
@@ -138,6 +163,15 @@ struct SettingsView: View {
             .navigationTitle(L.t("tab_settings", lang))
             .scrollContentBackground(.hidden)
             .background(CyclesBackground())
+            .sheet(isPresented: $showAccountSheet) {
+                NavigationStack { AccountView() }.environmentObject(account)
+            }
+            .sheet(isPresented: $showCommitment) {
+                CommitmentView()
+            }
+            .onAppear {
+                if CommandLine.arguments.contains("-openAccount") { showAccountSheet = true }
+            }
             .onChange(of: periodNotif) { _, on in if on { NotificationManager.shared.requestAuthorization() }; rescheduleNotifs() }
             .onChange(of: ovulationNotif) { _, on in if on { NotificationManager.shared.requestAuthorization() }; rescheduleNotifs() }
             .onChange(of: notifHour) { _, _ in rescheduleNotifs() }

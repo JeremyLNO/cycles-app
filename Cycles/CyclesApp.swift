@@ -4,6 +4,7 @@ import SwiftData
 @main
 struct CyclesApp: App {
     let container: ModelContainer
+    @StateObject private var account = AccountManager()
 
     init() {
         // 1. Language: honour -demoLang, otherwise seed the system default once.
@@ -32,6 +33,7 @@ struct CyclesApp: App {
         WindowGroup {
             RootView()
                 .tint(Palette.rose)
+                .environmentObject(account)
         }
         .modelContainer(container)
     }
@@ -115,6 +117,7 @@ enum PersistenceController {
 
         UserDefaults.standard.set(lea.id.uuidString, forKey: "selectedProfileID")
         UserDefaults.standard.set(true, forKey: "onboarded")
+        UserDefaults.standard.set(true, forKey: "seenCommitment")
     }
 }
 
@@ -125,8 +128,17 @@ struct RootView: View {
     @Query(sort: \Profile.order) private var profiles: [Profile]
     @AppStorage("selectedProfileID") private var selectedID = ""
     @AppStorage("onboarded") private var onboarded = false
+    @AppStorage("seenCommitment") private var seenCommitment = false
     @AppStorage(AppLanguage.storageKey) private var languageRaw = AppLanguage.systemDefault.rawValue
     @Environment(\.scenePhase) private var scenePhase
+    @EnvironmentObject private var account: AccountManager
+
+    /// Whether to show the "why Cycles is free" screen (first launch, once).
+    private var showCommitment: Bool {
+        if CommandLine.arguments.contains("-showCommitment") { return true }
+        if CommandLine.arguments.contains("-skipCommitment") { return false }
+        return !seenCommitment
+    }
 
     private var lang: AppLanguage { AppLanguage(rawValue: languageRaw) ?? .en }
 
@@ -145,6 +157,8 @@ struct RootView: View {
         Group {
             if CommandLine.arguments.contains("-widgetGallery") {
                 WidgetGalleryView()
+            } else if showCommitment {
+                CommitmentView(onContinue: { seenCommitment = true })
             } else if profiles.isEmpty && !onboarded {
                 OnboardingView()
             } else {
@@ -152,10 +166,16 @@ struct RootView: View {
             }
         }
         .appLock()
-        .onAppear(perform: updateSideEffects)
+        .onAppear {
+            updateSideEffects()
+            account.refreshCredentialState()
+        }
         .onChange(of: digest) { _, _ in updateSideEffects() }
         .onChange(of: scenePhase) { _, phase in
-            if phase == .active { updateSideEffects() }
+            if phase == .active {
+                updateSideEffects()
+                account.refreshCredentialState()
+            }
         }
     }
 

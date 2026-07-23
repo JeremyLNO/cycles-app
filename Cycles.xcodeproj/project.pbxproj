@@ -405,6 +405,7 @@
 				DEVELOPMENT_TEAM = 2E6D4Q69QB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_CFBundleDisplayName = "Period tracker made easy";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Cycles uses Face ID to keep your cycle data private.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -436,6 +437,7 @@
 				DEVELOPMENT_TEAM = 2E6D4Q69QB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_CFBundleDisplayName = "Period tracker made easy";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Cycles uses Face ID to keep your cycle data private.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
