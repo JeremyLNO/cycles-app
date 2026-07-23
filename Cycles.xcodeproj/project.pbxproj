@@ -25,6 +25,9 @@
 		BA0000000000000000000012 /* HealthTips.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0000000000000000000012 /* HealthTips.swift */; };
 		BA0000000000000000000013 /* DayLogSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0000000000000000000013 /* DayLogSheet.swift */; };
 		BA0000000000000000000014 /* InsightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0000000000000000000014 /* InsightsView.swift */; };
+		BA0000000000000000000015 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0000000000000000000015 /* AccountManager.swift */; };
+		BA0000000000000000000016 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0000000000000000000016 /* AccountView.swift */; };
+		BA0000000000000000000017 /* CommitmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0000000000000000000017 /* CommitmentView.swift */; };
 		BA0000000000000000000010 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC0000000000000000000010 /* Assets.xcassets */; };
 		BA0000000000000000000011 /* CyclesWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = CC0000000000000000000002 /* CyclesWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BD0000000000000000000001 /* CyclesWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0000000000000000000001 /* CyclesWidget.swift */; };
@@ -78,6 +81,9 @@
 		AC0000000000000000000012 /* HealthTips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTips.swift; sourceTree = "<group>"; };
 		AC0000000000000000000013 /* DayLogSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayLogSheet.swift; sourceTree = "<group>"; };
 		AC0000000000000000000014 /* InsightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightsView.swift; sourceTree = "<group>"; };
+		AC0000000000000000000015 /* AccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
+		AC0000000000000000000016 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		AC0000000000000000000017 /* CommitmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitmentView.swift; sourceTree = "<group>"; };
 		AC0000000000000000000010 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC0000000000000000000011 /* Cycles.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Cycles.entitlements; sourceTree = "<group>"; };
 		AD0000000000000000000001 /* CyclesWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CyclesWidget.swift; sourceTree = "<group>"; };
@@ -152,6 +158,9 @@
 				AC0000000000000000000012 /* HealthTips.swift */,
 				AC0000000000000000000013 /* DayLogSheet.swift */,
 				AC0000000000000000000014 /* InsightsView.swift */,
+				AC0000000000000000000015 /* AccountManager.swift */,
+				AC0000000000000000000016 /* AccountView.swift */,
+				AC0000000000000000000017 /* CommitmentView.swift */,
 				AC0000000000000000000010 /* Assets.xcassets */,
 				AC0000000000000000000011 /* Cycles.entitlements */,
 			);
@@ -277,6 +286,9 @@
 				BA0000000000000000000012 /* HealthTips.swift in Sources */,
 				BA0000000000000000000013 /* DayLogSheet.swift in Sources */,
 				BA0000000000000000000014 /* InsightsView.swift in Sources */,
+				BA0000000000000000000015 /* AccountManager.swift in Sources */,
+				BA0000000000000000000016 /* AccountView.swift in Sources */,
+				BA0000000000000000000017 /* CommitmentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,7 +405,7 @@
 				DEVELOPMENT_TEAM = 2E6D4Q69QB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = Cycles;
+				INFOPLIST_KEY_CFBundleDisplayName = "Period tracker made easy";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Cycles uses Face ID to keep your cycle data private.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -424,7 +436,7 @@
 				DEVELOPMENT_TEAM = 2E6D4Q69QB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = Cycles;
+				INFOPLIST_KEY_CFBundleDisplayName = "Period tracker made easy";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Cycles uses Face ID to keep your cycle data private.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
