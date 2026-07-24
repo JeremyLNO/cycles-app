@@ -71,7 +71,7 @@ struct HomeView: View {
             } label: {
                 HStack(spacing: 10) {
                     ProfileAvatar(name: profile?.name ?? "", colorHex: profile?.colorHex ?? "#F2738F")
-                    Text(profile?.name.isEmpty == false ? profile!.name : "Cycles")
+                    Text(profile?.name.isEmpty == false ? profile!.name : "Period tracker made easy")
                         .font(.system(.title3, design: .rounded).weight(.bold))
                         .foregroundStyle(Palette.ink)
                     Image(systemName: "chevron.down")

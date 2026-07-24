@@ -59,7 +59,7 @@ struct CyclesWidget: Widget {
         StaticConfiguration(kind: "CyclesWidget", provider: CycleProvider()) { entry in
             CyclesWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("Cycles")
+        .configurationDisplayName("Period tracker made easy")
         .description(L.t("widget_desc"))
         .supportedFamilies([.systemSmall, .systemMedium,
                             .accessoryCircular, .accessoryRectangular, .accessoryInline])
