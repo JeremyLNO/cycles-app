@@ -16,6 +16,10 @@ struct CyclesWidgetContent: View {
     }
     private var bigNumber: String { snapshot.isPeriodLate ? "\(snapshot.lateDays)" : "\(snapshot.days)" }
 
+    /// Pregnancy mode shows weeks and never a period countdown.
+    private var isPreg: Bool { snapshot.isPregnancy && snapshot.hasData }
+    private var pregSymbol: String { "figure.child.circle" }
+
     var body: some View {
         switch family {
         case .accessoryCircular:    accessoryCircular
@@ -30,10 +34,12 @@ struct CyclesWidgetContent: View {
     private var small: some View {
         VStack(spacing: 6) {
             HStack(spacing: 5) {
-                Image(systemName: snapshot.phaseValue.symbol)
+                Image(systemName: isPreg ? pregSymbol : snapshot.phaseValue.symbol)
                     .font(.caption2)
-                    .foregroundStyle(Palette.color(for: snapshot.phaseValue))
-                Text(snapshot.name.isEmpty ? L.t(snapshot.phaseValue.key, lang) : snapshot.name)
+                    .foregroundStyle(isPreg ? Palette.rose : Palette.color(for: snapshot.phaseValue))
+                Text(snapshot.name.isEmpty
+                     ? L.t(isPreg ? "mode_pregnancy" : snapshot.phaseValue.key, lang)
+                     : snapshot.name)
                     .font(.system(.caption, design: .rounded).weight(.semibold))
                     .foregroundStyle(Palette.sub)
                     .lineLimit(1)
@@ -57,9 +63,9 @@ struct CyclesWidgetContent: View {
                     .trim(from: 0, to: 0.7)
                     .stroke(accent, style: StrokeStyle(lineWidth: 10, lineCap: .round))
                     .rotationEffect(.degrees(-90))
-                Image(systemName: snapshot.phaseValue.symbol)
+                Image(systemName: isPreg ? pregSymbol : snapshot.phaseValue.symbol)
                     .font(.title3)
-                    .foregroundStyle(accent)
+                    .foregroundStyle(isPreg ? Palette.rose : accent)
             }
             .frame(width: 78, height: 78)
 
@@ -70,7 +76,7 @@ struct CyclesWidgetContent: View {
                         .foregroundStyle(Palette.ink)
                 }
                 content(alignment: .leading)
-                Text(L.t(snapshot.phaseValue.key, lang))
+                Text(L.t(isPreg ? "mode_pregnancy" : snapshot.phaseValue.key, lang))
                     .font(.caption).foregroundStyle(Palette.sub)
             }
             Spacer(minLength: 0)
@@ -86,23 +92,27 @@ struct CyclesWidgetContent: View {
         ZStack {
             AccessoryWidgetBackground()
             VStack(spacing: -2) {
-                Image(systemName: snapshot.eventKind == .period ? "drop.fill" : "sparkles").font(.caption2)
-                Text(snapshot.hasData ? bigNumber : "–")
+                Image(systemName: isPreg ? pregSymbol : (snapshot.eventKind == .period ? "drop.fill" : "sparkles"))
+                    .font(.caption2)
+                Text(snapshot.hasData ? (isPreg ? "\(snapshot.weeks)" : bigNumber) : "–")
                     .font(.system(.title3, design: .rounded).weight(.bold))
-                Text(L.t("unit_days", lang)).font(.system(size: 8))
+                Text(L.t(isPreg ? "unit_weeks" : "unit_days", lang)).font(.system(size: 8))
             }
         }
     }
 
     private var accessoryRectangular: some View {
         VStack(alignment: .leading, spacing: 2) {
-            Label(snapshot.eventKind == .period ? L.t("next_period", lang) : L.t("phase_ovulation", lang),
-                  systemImage: snapshot.eventKind == .period ? "drop.fill" : "sparkles")
+            Label(isPreg ? L.t("mode_pregnancy", lang)
+                         : (snapshot.eventKind == .period ? L.t("next_period", lang) : L.t("phase_ovulation", lang)),
+                  systemImage: isPreg ? pregSymbol : (snapshot.eventKind == .period ? "drop.fill" : "sparkles"))
                 .font(.caption2.weight(.semibold))
             if snapshot.hasData {
-                Text(snapshot.isPeriodLate
-                     ? String(format: L.t("late_fmt", lang), snapshot.lateDays)
-                     : (snapshot.days == 0 ? L.t("today", lang) : L.days(snapshot.days, lang)))
+                Text(isPreg
+                     ? String(format: L.t("preg_week_fmt", lang), snapshot.weeks)
+                     : (snapshot.isPeriodLate
+                        ? String(format: L.t("late_fmt", lang), snapshot.lateDays)
+                        : (snapshot.days == 0 ? L.t("today", lang) : L.days(snapshot.days, lang))))
                     .font(.system(.headline, design: .rounded))
             } else {
                 Text(L.t("widget_no_data", lang)).font(.caption)
@@ -111,8 +121,10 @@ struct CyclesWidgetContent: View {
     }
 
     private var accessoryInline: some View {
-        let sym = snapshot.eventKind == .period ? "drop.fill" : "sparkles"
-        let label = snapshot.days == 0 ? L.t("today", lang) : L.days(snapshot.days, lang)
+        let sym = isPreg ? pregSymbol : (snapshot.eventKind == .period ? "drop.fill" : "sparkles")
+        let label = isPreg
+            ? String(format: L.t("preg_week_fmt", lang), snapshot.weeks)
+            : (snapshot.days == 0 ? L.t("today", lang) : L.days(snapshot.days, lang))
         return Group {
             if snapshot.hasData {
                 Text("\(Image(systemName: sym)) \(label)")
@@ -129,6 +141,15 @@ struct CyclesWidgetContent: View {
                 Text(L.t("widget_no_data", lang))
                     .font(.system(.headline, design: .rounded))
                     .foregroundStyle(Palette.ink)
+            } else if isPreg {
+                Text("\(snapshot.weeks)")
+                    .font(.system(size: 44, weight: .heavy, design: .rounded))
+                    .foregroundStyle(Palette.rose)
+                Text(L.t(snapshot.weeks == 1 ? "unit_week" : "unit_weeks", lang))
+                    .font(.caption.weight(.medium)).foregroundStyle(Palette.sub)
+                Text(L.t("preg_caption", lang))
+                    .font(.caption2).foregroundStyle(Palette.sub)
+                    .multilineTextAlignment(alignment == .leading ? .leading : .center)
             } else if snapshot.isPeriodLate {
                 Text("\(snapshot.lateDays)")
                     .font(.system(size: 40, weight: .heavy, design: .rounded))

@@ -15,6 +15,12 @@ struct CycleSnapshot: Codable {
     var lateDays: Int
     var dayOfCycle: Int
     var lang: String          // AppLanguage raw value, so the widget localises correctly
+    /// "tracking" | "conceiving" | "pregnancy" — the widget adapts to it.
+    var mode: String = "tracking"
+    /// Completed pregnancy weeks (pregnancy mode only).
+    var weeks: Int = 0
+
+    var isPregnancy: Bool { mode == "pregnancy" }
 
     var eventKind: NextEventKind { NextEventKind(rawValue: kind) ?? .period }
     var phaseValue: CyclePhase { CyclePhase(rawValue: phase) ?? .follicular }

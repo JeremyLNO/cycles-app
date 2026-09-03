@@ -12,14 +12,24 @@ struct SettingsView: View {
     @AppStorage("lock.enabled") private var lockEnabled = false
     @AppStorage("default.cycleLength") private var defaultCycle = CycleEngine.defaultCycle
 
+    @Environment(\.modelContext) private var ctx
+    @AppStorage("selectedProfileID") private var selectedID = ""
+    @AppStorage(HealthKitManager.enabledKey) private var healthSync = false
+    @AppStorage(NotificationManager.Keys.pmsEnabled) private var pmsNotif = true
+    @StateObject private var health = HealthKitManager.shared
+
     @EnvironmentObject private var account: AccountManager
     @State private var showAccountSheet = false
     @State private var showCommitment = false
 
+    private var selectedProfile: Profile? {
+        profiles.first { $0.id.uuidString == selectedID } ?? profiles.first
+    }
+
     private var lang: AppLanguage { AppLanguage(rawValue: languageRaw) ?? .en }
 
     private var iCloudOn: Bool { FileManager.default.ubiquityIdentityToken != nil }
-    private var privacyURL: URL { URL(string: "https://www.crazybeelabs.com/privacy-policy/")! }
+    private var privacyURL: URL { URL(string: "https://www.crazybeelabs.com/legal/apps")! }
     private var appVersion: String {
         Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0"
     }
@@ -80,7 +90,36 @@ struct SettingsView: View {
                 Section(L.t("settings_notifications", lang)) {
                     Toggle(L.t("notif_period", lang), isOn: $periodNotif)
                     Toggle(L.t("notif_ovulation", lang), isOn: $ovulationNotif)
+                    Toggle(L.t("notif_pms", lang), isOn: $pmsNotif)
                     DatePicker(L.t("notif_time", lang), selection: timeBinding, displayedComponents: .hourAndMinute)
+                }
+
+                // Apple Health
+                Section {
+                    Toggle(L.t("health_sync", lang), isOn: $healthSync)
+                        .disabled(!health.isAvailable)
+                    Button {
+                        Task { await importFromHealth() }
+                    } label: {
+                        HStack {
+                            Label(L.t("health_import", lang), systemImage: "square.and.arrow.down")
+                                .foregroundStyle(healthSync ? Palette.rose : Palette.sub)
+                            Spacer()
+                            if health.isBusy { ProgressView() }
+                        }
+                    }
+                    .disabled(!healthSync || !health.isAvailable || health.isBusy)
+                    if let n = health.lastImportCount {
+                        Text(String(format: L.t("health_imported_fmt", lang), n))
+                            .font(.caption).foregroundStyle(Palette.ovulation)
+                    }
+                    if let err = health.lastError {
+                        Text(err).font(.caption).foregroundStyle(.red)
+                    }
+                } header: {
+                    Text(L.t("health_section", lang))
+                } footer: {
+                    Text(health.isAvailable ? L.t("health_footer", lang) : L.t("health_unavailable", lang))
                 }
 
                 // Default cycle
@@ -176,10 +215,29 @@ struct SettingsView: View {
             .onChange(of: ovulationNotif) { _, on in if on { NotificationManager.shared.requestAuthorization() }; rescheduleNotifs() }
             .onChange(of: notifHour) { _, _ in rescheduleNotifs() }
             .onChange(of: notifMinute) { _, _ in rescheduleNotifs() }
+            .onChange(of: pmsNotif) { _, on in if on { NotificationManager.shared.requestAuthorization() }; rescheduleNotifs() }
+            .onChange(of: healthSync) { _, on in Task { await healthSyncChanged(on) } }
         }
     }
 
     private func rescheduleNotifs() {
         NotificationManager.shared.reschedule(profiles: profiles, lang: lang)
+    }
+
+    /// Turning the toggle on asks for Health access, then pushes existing data across.
+    private func healthSyncChanged(_ on: Bool) async {
+        guard on else { return }
+        let granted = await health.requestAuthorization()
+        if granted, let profile = selectedProfile {
+            await health.export(profile: profile)
+        }
+    }
+
+    private func importFromHealth() async {
+        guard let profile = selectedProfile else { return }
+        health.isBusy = true
+        _ = await health.requestAuthorization()
+        _ = await health.importCycleStarts(into: profile, context: ctx)
+        health.isBusy = false
     }
 }

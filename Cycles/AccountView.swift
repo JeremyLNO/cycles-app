@@ -12,7 +12,7 @@ struct AccountView: View {
     @State private var showDeleteConfirm = false
 
     private var lang: AppLanguage { AppLanguage(rawValue: languageRaw) ?? .en }
-    private let privacyURL = URL(string: "https://www.crazybeelabs.com/privacy-policy/")!
+    private let privacyURL = URL(string: "https://www.crazybeelabs.com/legal/apps")!
 
     var body: some View {
         ZStack {

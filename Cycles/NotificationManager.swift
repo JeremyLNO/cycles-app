@@ -11,6 +11,7 @@ final class NotificationManager {
     enum Keys {
         static let periodEnabled = "notif.period.enabled"
         static let ovulationEnabled = "notif.ovulation.enabled"
+        static let pmsEnabled = "notif.pms.enabled"
         static let hour = "notif.hour"
         static let minute = "notif.minute"
     }
@@ -26,21 +27,24 @@ final class NotificationManager {
         let d = UserDefaults.standard
         let periodOn = d.object(forKey: Keys.periodEnabled) as? Bool ?? true
         let ovulationOn = d.object(forKey: Keys.ovulationEnabled) as? Bool ?? true
+        let pmsOn = d.object(forKey: Keys.pmsEnabled) as? Bool ?? true
         let hour = d.object(forKey: Keys.hour) as? Int ?? 9
         let minute = d.object(forKey: Keys.minute) as? Int ?? 0
         reschedule(profiles: profiles, periodEnabled: periodOn, ovulationEnabled: ovulationOn,
-                   hour: hour, minute: minute, lang: lang)
+                   pmsEnabled: pmsOn, hour: hour, minute: minute, lang: lang)
     }
 
     func reschedule(profiles: [Profile], periodEnabled: Bool, ovulationEnabled: Bool,
-                    hour: Int, minute: Int, lang: AppLanguage) {
+                    pmsEnabled: Bool = true, hour: Int, minute: Int, lang: AppLanguage) {
         center.removeAllPendingNotificationRequests()
-        guard periodEnabled || ovulationEnabled else { return }
+        guard periodEnabled || ovulationEnabled || pmsEnabled else { return }
 
         let cal = Calendar.current
         let now = Date()
 
         for profile in profiles {
+            // No cycle reminders during a pregnancy.
+            guard profile.mode != .pregnancy else { continue }
             guard let p = profile.prediction(now: now) else { continue }
             let name = profile.name.trimmingCharacters(in: .whitespaces)
             let avg = p.averageCycleLength
@@ -63,6 +67,16 @@ final class NotificationManager {
                              body: body("notif_ovulation_body", named: "notif_ovulation_body_named", name: name, lang: lang))
                 }
             }
+            if pmsEnabled {
+                // Fires on the first day of the premenstrual window (not the day before).
+                for i in 0..<3 {
+                    let date = cal.date(byAdding: .day, value: i * avg, to: p.upcomingPmsStart) ?? p.upcomingPmsStart
+                    schedule(id: "pms.\(profile.id.uuidString).\(i)",
+                             eventDate: date, hour: hour, minute: minute, daysBefore: 0,
+                             title: L.t("notif_pms_title", lang),
+                             body: body("notif_pms_body", named: "notif_pms_body_named", name: name, lang: lang))
+                }
+            }
         }
     }
 
@@ -70,11 +84,12 @@ final class NotificationManager {
         name.isEmpty ? L.t(plain, lang) : String(format: L.t(named, lang), name)
     }
 
-    /// Schedules one notification fired the day BEFORE `eventDate` at hour:minute.
-    private func schedule(id: String, eventDate: Date, hour: Int, minute: Int, title: String, body: String) {
+    /// Schedules one notification, `daysBefore` days before `eventDate`, at hour:minute.
+    private func schedule(id: String, eventDate: Date, hour: Int, minute: Int,
+                          daysBefore: Int = 1, title: String, body: String) {
         let cal = Calendar.current
-        guard let dayBefore = cal.date(byAdding: .day, value: -1, to: cal.startOfDay(for: eventDate)),
-              var comps = Optional(cal.dateComponents([.year, .month, .day], from: dayBefore)) else { return }
+        guard let fireDay = cal.date(byAdding: .day, value: -daysBefore, to: cal.startOfDay(for: eventDate)),
+              var comps = Optional(cal.dateComponents([.year, .month, .day], from: fireDay)) else { return }
         comps.hour = hour
         comps.minute = minute
         guard let fireDate = cal.date(from: comps), fireDate > Date() else { return }

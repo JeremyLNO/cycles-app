@@ -74,6 +74,8 @@ struct ProfileEditorSheet: View {
     @State private var hasBirthDate: Bool
     @State private var birthDate: Date
     @State private var childrenCount: Int
+    @State private var mode: TrackingMode
+    @State private var pregnancyStart: Date
 
     @Query(sort: \Profile.order) private var allProfiles: [Profile]
 
@@ -88,6 +90,9 @@ struct ProfileEditorSheet: View {
         let defaultBirth = Calendar.current.date(byAdding: .year, value: -28, to: Date()) ?? Date()
         _birthDate = State(initialValue: profile?.birthDate ?? defaultBirth)
         _childrenCount = State(initialValue: profile?.childrenCount ?? 0)
+        _mode = State(initialValue: profile?.mode ?? .tracking)
+        let lastPeriod = profile?.startDates.last ?? Date()
+        _pregnancyStart = State(initialValue: profile?.pregnancyStart ?? lastPeriod)
     }
 
     private var lang: AppLanguage { AppLanguage(rawValue: languageRaw) ?? .en }
@@ -109,6 +114,23 @@ struct ProfileEditorSheet: View {
                 }
                 Section(L.t("profile_color", lang)) {
                     swatches
+                }
+                Section {
+                    Picker(L.t("profile_mode", lang), selection: $mode.animation()) {
+                        ForEach(TrackingMode.allCases) { m in
+                            Label(L.t(m.key, lang), systemImage: m.symbol).tag(m)
+                        }
+                    }
+                    .pickerStyle(.navigationLink)
+                    if mode == .pregnancy {
+                        DatePicker(L.t("preg_start", lang), selection: $pregnancyStart,
+                                   in: ...Date(), displayedComponents: .date)
+                        labelRow(L.t("preg_due_date", lang),
+                                 cyclesDate(CycleEngine.pregnancy(lastPeriod: pregnancyStart).dueDate,
+                                            lang: lang, template: "d MMM yyyy"))
+                    }
+                } footer: {
+                    Text(L.t(mode.key + "_help", lang))
                 }
                 Section {
                     Stepper(value: $cycleLength, in: CycleEngine.minCycle...CycleEngine.maxCycle) {
@@ -181,11 +203,15 @@ struct ProfileEditorSheet: View {
             profile.periodLength = periodLength
             profile.birthDate = hasBirthDate ? birthDate : nil
             profile.childrenCount = childrenCount
+            profile.mode = mode
+            profile.pregnancyStart = mode == .pregnancy ? pregnancyStart : nil
         } else {
             let p = Profile(name: name, colorHex: colorHex, cycleLength: cycleLength,
                             periodLength: periodLength, order: allProfiles.count)
             p.birthDate = hasBirthDate ? birthDate : nil
             p.childrenCount = childrenCount
+            p.mode = mode
+            p.pregnancyStart = mode == .pregnancy ? pregnancyStart : nil
             ctx.insert(p)
             selectedID = p.id.uuidString
         }
@@ -206,8 +232,11 @@ struct OnboardingView: View {
     @State private var name = ""
     @State private var lastPeriod = Calendar.current.date(byAdding: .day, value: -7, to: Date()) ?? Date()
     @State private var cycleLength = UserDefaults.standard.object(forKey: "default.cycleLength") as? Int ?? CycleEngine.defaultCycle
+    @State private var mode: TrackingMode = .tracking
 
     private var lang: AppLanguage { AppLanguage(rawValue: languageRaw) ?? .en }
+    /// Pregnancy mode doesn't need the cycle-length step.
+    private var lastStep: Int { mode == .pregnancy ? 4 : 5 }
 
     var body: some View {
         ZStack {
@@ -242,13 +271,23 @@ struct OnboardingView: View {
                 }
             }
         case 3:
+            modeStep
+        case 4:
             VStack(spacing: 16) {
-                titleBlock(L.t("onb_last_title", lang), L.t("onb_last_body", lang))
+                titleBlock(L.t(mode == .pregnancy ? "onb_preg_title" : "onb_last_title", lang),
+                           L.t(mode == .pregnancy ? "preg_start" : "onb_last_body", lang))
                 GlassCard {
                     DatePicker("", selection: $lastPeriod, in: ...Date(), displayedComponents: .date)
                         .datePickerStyle(.graphical)
                         .labelsHidden()
                         .tint(Palette.rose)
+                }
+                if mode == .pregnancy {
+                    Text(L.t("preg_due_date", lang) + " · "
+                         + cyclesDate(CycleEngine.pregnancy(lastPeriod: lastPeriod).dueDate,
+                                      lang: lang, template: "d MMM yyyy"))
+                        .font(.system(.subheadline, design: .rounded).weight(.semibold))
+                        .foregroundStyle(Palette.rose)
                 }
             }
         default:
@@ -261,6 +300,41 @@ struct OnboardingView: View {
                             Spacer()
                             Text(L.days(cycleLength, lang)).foregroundStyle(Palette.rose).fontWeight(.bold)
                         }
+                    }
+                }
+            }
+        }
+    }
+
+    private var modeStep: some View {
+        VStack(spacing: 18) {
+            titleBlock(L.t("onb_mode_title", lang), L.t("onb_mode_body", lang))
+            VStack(spacing: 10) {
+                ForEach(TrackingMode.allCases) { m in
+                    Button {
+                        mode = m
+                    } label: {
+                        HStack(spacing: 12) {
+                            Image(systemName: m.symbol)
+                                .foregroundStyle(mode == m ? Palette.rose : Palette.sub)
+                                .frame(width: 26)
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text(L.t(m.key, lang))
+                                    .font(.system(.headline, design: .rounded))
+                                    .foregroundStyle(Palette.ink)
+                                Text(L.t(m.key + "_help", lang))
+                                    .font(.caption2).foregroundStyle(Palette.sub)
+                                    .multilineTextAlignment(.leading)
+                                    .fixedSize(horizontal: false, vertical: true)
+                            }
+                            Spacer(minLength: 0)
+                            Image(systemName: mode == m ? "checkmark.circle.fill" : "circle")
+                                .foregroundStyle(mode == m ? Palette.rose : Palette.sub)
+                        }
+                        .padding(.horizontal, 16).padding(.vertical, 13)
+                        .background(RoundedRectangle(cornerRadius: 16, style: .continuous).fill(Palette.card))
+                        .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
+                            .stroke(mode == m ? Palette.rose : .clear, lineWidth: 2))
                     }
                 }
             }
@@ -311,9 +385,9 @@ struct OnboardingView: View {
 
     private var button: some View {
         Button {
-            if step >= 4 { finish() } else { step += 1 }
+            if step >= lastStep { finish() } else { step += 1 }
         } label: {
-            Text(step >= 4 ? L.t("onb_start", lang) : continueLabel)
+            Text(step >= lastStep ? L.t("onb_start", lang) : continueLabel)
                 .font(.system(.headline, design: .rounded))
                 .foregroundStyle(.white)
                 .frame(maxWidth: .infinity)
@@ -335,6 +409,10 @@ struct OnboardingView: View {
         let p = Profile(name: name.trimmingCharacters(in: .whitespaces),
                         colorHex: Palette.profileSwatches[0],
                         cycleLength: cycleLength, periodLength: CycleEngine.defaultPeriod, order: 0)
+        p.mode = mode
+        // In pregnancy mode the picked date is the LMP: it dates the pregnancy and
+        // still belongs in the period history.
+        p.pregnancyStart = mode == .pregnancy ? lastPeriod : nil
         ctx.insert(p)
         let entry = PeriodEntry(startDate: lastPeriod, profile: p)
         ctx.insert(entry)

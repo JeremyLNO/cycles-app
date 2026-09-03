@@ -1,6 +1,23 @@
 import Foundation
 import SwiftData
 
+/// How a person uses the app. The home screen adapts to the selected mode.
+enum TrackingMode: String, CaseIterable, Identifiable {
+    case tracking      // follow the cycle (default)
+    case conceiving    // trying to conceive: fertile window front and centre
+    case pregnancy     // pregnancy: weeks and due date instead of predictions
+
+    var id: String { rawValue }
+    var key: String { "mode_\(rawValue)" }
+    var symbol: String {
+        switch self {
+        case .tracking:   return "drop.fill"
+        case .conceiving: return "heart.circle.fill"
+        case .pregnancy:  return "figure.child.circle"
+        }
+    }
+}
+
 /// A tracked person. The app supports several profiles (e.g. for the whole family).
 /// CloudKit-compatible: every stored property has a default and relationships are optional.
 @Model
@@ -17,6 +34,11 @@ final class Profile {
     // Optional personal info the user can add about herself.
     var birthDate: Date? = nil
     var childrenCount: Int = 0
+
+    // Tracking / conceiving / pregnancy mode.
+    var modeRaw: String = TrackingMode.tracking.rawValue
+    /// First day of the last menstrual period, used to date the pregnancy.
+    var pregnancyStart: Date? = nil
 
     @Relationship(deleteRule: .cascade, inverse: \PeriodEntry.profile)
     var entries: [PeriodEntry]? = []
@@ -39,6 +61,19 @@ final class Profile {
         self.createdAt = Date()
         self.entries = []
         self.dayLogs = []
+    }
+
+    var mode: TrackingMode {
+        get { TrackingMode(rawValue: modeRaw) ?? .tracking }
+        set { modeRaw = newValue.rawValue }
+    }
+
+    /// Pregnancy progress, when the profile is in pregnancy mode and a start date is set.
+    func pregnancy(now: Date = Date()) -> PregnancyProgress? {
+        guard mode == .pregnancy else { return nil }
+        // Fall back to the last logged period if no explicit start date was given.
+        guard let lmp = pregnancyStart ?? startDates.last else { return nil }
+        return CycleEngine.pregnancy(lastPeriod: lmp, now: now)
     }
 
     /// Age in years, derived from the birth date (nil if not set).
@@ -69,11 +104,23 @@ final class Profile {
 
     /// Builds the App Group snapshot the widget reads.
     func snapshot(now: Date = Date(), lang: AppLanguage = .current) -> CycleSnapshot {
+        // Pregnancy: the widget shows weeks and the due date, never a period countdown.
+        if let preg = pregnancy(now: now) {
+            return CycleSnapshot(
+                hasData: true, name: name, colorHex: colorHex,
+                kind: NextEventKind.period.rawValue,
+                days: preg.daysRemaining, eventDate: preg.dueDate,
+                phase: CyclePhase.luteal.rawValue,
+                isPeriodLate: false, lateDays: 0, dayOfCycle: preg.daysElapsed,
+                lang: lang.rawValue, mode: TrackingMode.pregnancy.rawValue, weeks: preg.weeks
+            )
+        }
         guard let p = prediction(now: now) else {
             var empty = CycleSnapshot.empty
             empty.name = name
             empty.colorHex = colorHex
             empty.lang = lang.rawValue
+            empty.mode = mode.rawValue
             return empty
         }
         let nearest = p.nearestEvent
@@ -88,7 +135,9 @@ final class Profile {
             isPeriodLate: p.isPeriodLate,
             lateDays: p.lateDays,
             dayOfCycle: p.dayOfCycle,
-            lang: lang.rawValue
+            lang: lang.rawValue,
+            mode: mode.rawValue,
+            weeks: 0
         )
     }
 }

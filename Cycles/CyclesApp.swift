@@ -81,7 +81,16 @@ enum PersistenceController {
             return p
         }
 
-        let lea = make("Léa", hex: "#F2738F", order: 0, lastStartOffset: 9, cycle: 28)
+        // Debug: -demoOffset N puts Léa's last period N days ago (exercises the hero states).
+        let leaOffset = launchArgValue("-demoOffset").flatMap { Int($0) } ?? 9
+        let lea = make("Léa", hex: "#F2738F", order: 0, lastStartOffset: leaOffset, cycle: 28)
+        // Debug: -demoMode tracking|conceiving|pregnancy for the mode-specific screens.
+        if let raw = launchArgValue("-demoMode"), let m = TrackingMode(rawValue: raw) {
+            lea.mode = m
+            if m == .pregnancy {
+                lea.pregnancyStart = cal.date(byAdding: .day, value: -110, to: today)
+            }
+        }
         lea.birthDate = cal.date(from: DateComponents(year: 1994, month: 3, day: 12))
         lea.childrenCount = 2
         let sofia = make("Sofia", hex: "#5CBDB0", order: 1, lastStartOffset: 2, cycle: 30)

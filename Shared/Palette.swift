@@ -26,6 +26,7 @@ enum Palette {
     static let fertile      = Color(red: 0.36, green: 0.74, blue: 0.69) // mint/teal
     static let ovulation    = Color(red: 0.20, green: 0.66, blue: 0.74) // bright teal
     static let luteal       = Color(red: 0.98, green: 0.66, blue: 0.51) // peach
+    static let pms          = Color(red: 0.85, green: 0.48, blue: 0.72) // mauve/plum
 
     static func color(for phase: CyclePhase) -> Color {
         switch phase {
@@ -34,6 +35,7 @@ enum Palette {
         case .fertile:      return fertile
         case .ovulation:    return ovulation
         case .luteal:       return luteal
+        case .pms:          return pms
         }
     }
 

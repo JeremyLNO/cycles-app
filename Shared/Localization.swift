@@ -90,6 +90,15 @@ enum L {
         "today_period":     [.en: "Your period is expected today", .fr: "Tes règles sont prévues aujourd'hui", .es: "Tu regla se espera hoy", .de: "Deine Periode wird heute erwartet", .pt: "O teu período é esperado hoje"],
         "today_ovulation":  [.en: "Ovulation is expected today", .fr: "Ton ovulation est prévue aujourd'hui", .es: "Tu ovulación se espera hoy", .de: "Dein Eisprung wird heute erwartet", .pt: "A tua ovulação é esperada hoje"],
         "period_ongoing":   [.en: "Period in progress", .fr: "Règles en cours", .es: "Regla en curso", .de: "Periode läuft", .pt: "Período em curso"],
+
+        // Hero ring — explicit, directional wording (started X days ago vs in X days)
+        "hero_started_today":  [.en: "Your period started today", .fr: "Tes règles ont commencé aujourd'hui", .es: "Tu regla empezó hoy", .de: "Deine Periode hat heute begonnen", .pt: "O teu período começou hoje"],
+        "hero_since_started":  [.en: "since your period started", .fr: "depuis le début de tes règles", .es: "desde que empezó tu regla", .de: "seit Beginn deiner Periode", .pt: "desde o início do teu período"],
+        "hero_until_period":   [.en: "until your period starts", .fr: "avant le début de tes règles", .es: "hasta que empiece tu regla", .de: "bis deine Periode beginnt", .pt: "até o teu período começar"],
+        "hero_until_ovulation":[.en: "until your ovulation", .fr: "avant ton ovulation", .es: "hasta tu ovulación", .de: "bis zu deinem Eisprung", .pt: "até à tua ovulação"],
+        "hero_late_caption":   [.en: "your period hasn't started yet", .fr: "tes règles ne sont pas encore arrivées", .es: "tu regla aún no ha llegado", .de: "deine Periode ist noch nicht da", .pt: "o teu período ainda não chegou"],
+        "hero_late_day":       [.en: "day late", .fr: "jour de retard", .es: "día de retraso", .de: "Tag überfällig", .pt: "dia de atraso"],
+        "hero_late_days":      [.en: "days late", .fr: "jours de retard", .es: "días de retraso", .de: "Tage überfällig", .pt: "dias de atraso"],
         "cycle_day_fmt":    [.en: "Day %d of your cycle", .fr: "Jour %d du cycle", .es: "Día %d del ciclo", .de: "Tag %d des Zyklus", .pt: "Dia %d do ciclo"],
         "late_fmt":         [.en: "%d days late", .fr: "%d j de retard", .es: "%d días de retraso", .de: "%d Tage überfällig", .pt: "%d dias de atraso"],
         "log_period_today": [.en: "My period started today", .fr: "J'ai mes règles aujourd'hui", .es: "Hoy me vino la regla", .de: "Meine Periode hat heute begonnen", .pt: "O meu período começou hoje"],
@@ -265,5 +274,53 @@ enum L {
         "free_row_privacy":[.en: "Your health data stays private, on your device and iCloud.", .fr: "Tes données de santé restent privées, sur ton appareil et ton iCloud.", .es: "Tus datos de salud permanecen privados, en tu dispositivo e iCloud.", .de: "Deine Gesundheitsdaten bleiben privat, auf deinem Gerät und in iCloud.", .pt: "Os teus dados de saúde ficam privados, no teu dispositivo e no iCloud."],
         "free_row_suite":  [.en: "Brought to you by Crazy Bee Labs, alongside Pillo and Respire.", .fr: "Offerte par Crazy Bee Labs, aux côtés de Pillo et Respire.", .es: "Ofrecida por Crazy Bee Labs, junto a Pillo y Respire.", .de: "Präsentiert von Crazy Bee Labs, zusammen mit Pillo und Respire.", .pt: "Oferecida pela Crazy Bee Labs, ao lado de Pillo e Respire."],
         "free_link":       [.en: "Our commitment", .fr: "Notre engagement", .es: "Nuestro compromiso", .de: "Unser Versprechen", .pt: "O nosso compromisso"],
+
+        // MARK: PMS
+        "phase_pms":  [.en: "PMS", .fr: "SPM", .es: "SPM", .de: "PMS", .pt: "TPM"],
+        "legend_pms": [.en: "PMS window", .fr: "Fenêtre SPM", .es: "Ventana SPM", .de: "PMS-Fenster", .pt: "Janela TPM"],
+        "notif_pms":  [.en: "PMS reminder", .fr: "Rappel SPM", .es: "Aviso de SPM", .de: "PMS-Erinnerung", .pt: "Lembrete de TPM"],
+        "notif_pms_title":      [.en: "PMS window ahead", .fr: "Fenêtre SPM", .es: "Ventana SPM", .de: "PMS-Fenster", .pt: "Janela TPM"],
+        "notif_pms_body":       [.en: "Your period is close — PMS symptoms may show up over the next few days.", .fr: "Tes règles approchent : des symptômes du SPM peuvent apparaître ces prochains jours.", .es: "Tu regla se acerca: pueden aparecer síntomas del SPM estos días.", .de: "Deine Periode naht – in den nächsten Tagen können PMS-Symptome auftreten.", .pt: "O teu período aproxima-se — podem surgir sintomas de TPM nos próximos dias."],
+        "notif_pms_body_named": [.en: "%@: PMS symptoms may show up over the next few days.", .fr: "%@ : des symptômes du SPM peuvent apparaître ces prochains jours.", .es: "%@: pueden aparecer síntomas del SPM estos días.", .de: "%@: in den nächsten Tagen können PMS-Symptome auftreten.", .pt: "%@: podem surgir sintomas de TPM nos próximos dias."],
+
+        // MARK: Modes (tracking / conceiving / pregnancy)
+        "profile_mode":        [.en: "Mode", .fr: "Mode", .es: "Modo", .de: "Modus", .pt: "Modo"],
+        "mode_tracking":       [.en: "Cycle tracking", .fr: "Suivi du cycle", .es: "Seguimiento del ciclo", .de: "Zyklus verfolgen", .pt: "Seguimento do ciclo"],
+        "mode_conceiving":     [.en: "Trying to conceive", .fr: "Essai bébé", .es: "Buscando embarazo", .de: "Kinderwunsch", .pt: "A tentar engravidar"],
+        "mode_pregnancy":      [.en: "Pregnancy", .fr: "Grossesse", .es: "Embarazo", .de: "Schwangerschaft", .pt: "Gravidez"],
+        "mode_tracking_help":  [.en: "Predictions for your period and ovulation.", .fr: "Prédictions de tes règles et de ton ovulation.", .es: "Predicciones de tu regla y ovulación.", .de: "Vorhersagen für Periode und Eisprung.", .pt: "Previsões do período e da ovulação."],
+        "mode_conceiving_help":[.en: "The fertile window is shown first, to help you conceive.", .fr: "La fenêtre fertile est mise en avant pour t'aider à concevoir.", .es: "La ventana fértil se muestra primero, para ayudarte a concebir.", .de: "Die fruchtbaren Tage stehen im Vordergrund.", .pt: "A janela fértil aparece primeiro, para ajudar a conceber."],
+        "mode_pregnancy_help": [.en: "Weeks and due date replace cycle predictions, and cycle reminders pause.", .fr: "Les semaines et le terme remplacent les prédictions, et les rappels de cycle sont suspendus.", .es: "Las semanas y la fecha de parto sustituyen las predicciones; los avisos del ciclo se pausan.", .de: "Wochen und Termin ersetzen die Vorhersagen; Zyklus-Erinnerungen pausieren.", .pt: "As semanas e a data prevista substituem as previsões; os lembretes do ciclo ficam em pausa."],
+
+        // Conceiving
+        "conceive_fertile_now": [.en: "You're in your fertile window — the best days to conceive", .fr: "Tu es dans ta fenêtre fertile — les meilleurs jours pour concevoir", .es: "Estás en tu ventana fértil: los mejores días para concebir", .de: "Du bist in deinen fruchtbaren Tagen – die besten Tage zum Empfangen", .pt: "Estás na tua janela fértil — os melhores dias para conceber"],
+        "hero_until_fertile":   [.en: "until your fertile window", .fr: "avant ta fenêtre fertile", .es: "hasta tu ventana fértil", .de: "bis zu deinen fruchtbaren Tagen", .pt: "até à tua janela fértil"],
+        "conceive_late_hint":   [.en: "your period is late — a test may tell you more", .fr: "tes règles sont en retard — un test peut t'en dire plus", .es: "tu regla se retrasa: una prueba puede decirte más", .de: "deine Periode ist überfällig – ein Test kann mehr sagen", .pt: "o teu período está atrasado — um teste pode dizer mais"],
+        "fertile_until":        [.en: "Fertile until", .fr: "Fertile jusqu'au", .es: "Fértil hasta", .de: "Fruchtbar bis", .pt: "Fértil até"],
+
+        // Pregnancy
+        "unit_week":            [.en: "week", .fr: "semaine", .es: "semana", .de: "Woche", .pt: "semana"],
+        "unit_weeks":           [.en: "weeks", .fr: "semaines", .es: "semanas", .de: "Wochen", .pt: "semanas"],
+        "preg_caption":         [.en: "of pregnancy", .fr: "de grossesse", .es: "de embarazo", .de: "schwanger", .pt: "de gravidez"],
+        "preg_caption_days_fmt":[.en: "and %d days of pregnancy", .fr: "et %d jours de grossesse", .es: "y %d días de embarazo", .de: "und %d Tage schwanger", .pt: "e %d dias de gravidez"],
+        "preg_week_fmt":        [.en: "Week %d", .fr: "Semaine %d", .es: "Semana %d", .de: "Woche %d", .pt: "Semana %d"],
+        "preg_trimester_fmt":   [.en: "Trimester %d", .fr: "Trimestre %d", .es: "Trimestre %d", .de: "%d. Trimester", .pt: "Trimestre %d"],
+        "preg_due_date":        [.en: "Due date", .fr: "Terme prévu", .es: "Fecha prevista", .de: "Entbindungstermin", .pt: "Data prevista"],
+        "preg_days_left":       [.en: "Days to go", .fr: "Jours restants", .es: "Días restantes", .de: "Tage verbleibend", .pt: "Dias restantes"],
+        "preg_start":           [.en: "First day of last period", .fr: "1er jour des dernières règles", .es: "Primer día de la última regla", .de: "1. Tag der letzten Periode", .pt: "1.º dia do último período"],
+        "preg_end":             [.en: "End pregnancy tracking", .fr: "Terminer le suivi de grossesse", .es: "Finalizar el seguimiento del embarazo", .de: "Schwangerschafts-Tracking beenden", .pt: "Terminar o acompanhamento da gravidez"],
+        "preg_end_q":           [.en: "End pregnancy tracking?", .fr: "Terminer le suivi de grossesse ?", .es: "¿Finalizar el seguimiento del embarazo?", .de: "Schwangerschafts-Tracking beenden?", .pt: "Terminar o acompanhamento da gravidez?"],
+        "preg_end_msg":         [.en: "Cycle tracking resumes. Nothing is deleted — your history stays as it is.", .fr: "Le suivi du cycle reprend. Rien n'est supprimé : ton historique reste intact.", .es: "El seguimiento del ciclo se reanuda. No se elimina nada: tu historial permanece intacto.", .de: "Das Zyklus-Tracking wird fortgesetzt. Nichts wird gelöscht – dein Verlauf bleibt erhalten.", .pt: "O seguimento do ciclo é retomado. Nada é eliminado — o teu histórico mantém-se."],
+        "onb_mode_title":       [.en: "What would you like to track?", .fr: "Que veux-tu suivre ?", .es: "¿Qué quieres seguir?", .de: "Was möchtest du verfolgen?", .pt: "O que queres acompanhar?"],
+        "onb_mode_body":        [.en: "You can change this at any time.", .fr: "Tu pourras changer à tout moment.", .es: "Puedes cambiarlo cuando quieras.", .de: "Du kannst das jederzeit ändern.", .pt: "Podes mudar a qualquer momento."],
+        "onb_preg_title":       [.en: "Your pregnancy", .fr: "Ta grossesse", .es: "Tu embarazo", .de: "Deine Schwangerschaft", .pt: "A tua gravidez"],
+
+        // MARK: Apple Health
+        "health_section":      [.en: "Apple Health", .fr: "Apple Santé", .es: "Salud de Apple", .de: "Apple Health", .pt: "Saúde da Apple"],
+        "health_sync":         [.en: "Sync with Apple Health", .fr: "Synchroniser avec Santé", .es: "Sincronizar con Salud", .de: "Mit Health synchronisieren", .pt: "Sincronizar com a Saúde"],
+        "health_import":       [.en: "Import from Apple Health", .fr: "Importer depuis Santé", .es: "Importar desde Salud", .de: "Aus Health importieren", .pt: "Importar da Saúde"],
+        "health_footer":       [.en: "Your period days are written to Health, and cycle starts recorded there can be imported. Only the selected person is synced.", .fr: "Tes jours de règles sont écrits dans Santé, et les débuts de cycle qui s'y trouvent peuvent être importés. Seule la personne sélectionnée est synchronisée.", .es: "Tus días de regla se escriben en Salud y los inicios de ciclo registrados allí se pueden importar. Solo se sincroniza la persona seleccionada.", .de: "Deine Periodentage werden in Health geschrieben; dort erfasste Zyklusstarts lassen sich importieren. Nur die ausgewählte Person wird synchronisiert.", .pt: "Os teus dias de período são escritos na Saúde e os inícios de ciclo aí registados podem ser importados. Apenas a pessoa selecionada é sincronizada."],
+        "health_unavailable":  [.en: "Apple Health isn't available on this device.", .fr: "Apple Santé n'est pas disponible sur cet appareil.", .es: "Salud de Apple no está disponible en este dispositivo.", .de: "Apple Health ist auf diesem Gerät nicht verfügbar.", .pt: "A Saúde da Apple não está disponível neste dispositivo."],
+        "health_imported_fmt": [.en: "%d period start(s) imported", .fr: "%d début(s) de règles importé(s)", .es: "%d inicio(s) de regla importado(s)", .de: "%d Periodenbeginn(e) importiert", .pt: "%d início(s) de período importado(s)"],
     ]
 }

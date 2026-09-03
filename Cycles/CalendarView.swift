@@ -22,7 +22,7 @@ struct CalendarView: View {
         return c
     }
 
-    enum Marker { case none, periodActual, periodPredicted, fertile, ovulation }
+    enum Marker { case none, periodActual, periodPredicted, fertile, ovulation, pms }
 
     var body: some View {
         ZStack {
@@ -127,6 +127,7 @@ struct CalendarView: View {
         case .periodPredicted: Circle().fill(Palette.menstruation.opacity(0.20)).overlay(Circle().strokeBorder(Palette.menstruation.opacity(0.5), style: StrokeStyle(lineWidth: 1, dash: [3])))
         case .fertile:         Circle().fill(Palette.fertile.opacity(0.22))
         case .ovulation:       Circle().fill(Palette.ovulation.opacity(0.30))
+        case .pms:             Circle().fill(Palette.pms.opacity(0.20))
         case .none:            Circle().fill(Color.clear)
         }
     }
@@ -136,6 +137,7 @@ struct CalendarView: View {
         case .periodActual: return .white
         case .fertile, .ovulation: return Palette.ovulation
         case .periodPredicted: return Palette.menstruation
+        case .pms: return Palette.pms
         case .none: return Palette.ink
         }
     }
@@ -148,6 +150,7 @@ struct CalendarView: View {
                 legendRow(color: Palette.menstruation.opacity(0.30), text: L.t("legend_predicted", lang))
                 legendRow(color: Palette.fertile.opacity(0.35), text: L.t("legend_fertile", lang))
                 legendRow(color: Palette.ovulation.opacity(0.5), text: L.t("legend_ovulation", lang), symbol: "sparkles")
+                legendRow(color: Palette.pms.opacity(0.35), text: L.t("legend_pms", lang))
             }
         }
     }
@@ -194,6 +197,8 @@ struct CalendarView: View {
             let ov = CycleEngine.addingDays(-p.lutealLength, to: start)
             if d == ov { return .ovulation }
             if d >= CycleEngine.addingDays(-5, to: ov) && d <= CycleEngine.addingDays(1, to: ov) { return .fertile }
+            // Premenstrual window: the days right before this predicted period.
+            if d >= CycleEngine.addingDays(-CycleEngine.pmsWindow, to: start) && d < start { return .pms }
         }
         return .none
     }

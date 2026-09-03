@@ -76,5 +76,22 @@ enum HealthTips {
             .pt: ["Desejos ou alterações de humor (TPM) são comuns: o magnésio pode ajudar.",
                   "Dormir bem e fazer atividade suave ajudam nesta fase."],
         ],
+        .pms: [
+            .en: ["Your period is close: cut back on salt and caffeine to ease bloating.",
+                  "Tender breasts, irritability, cravings — classic PMS. Be kind to yourself.",
+                  "Keep a pad or cup handy: your period is expected in the coming days."],
+            .fr: ["Tes règles approchent : réduis le sel et la caféine pour limiter les ballonnements.",
+                  "Seins sensibles, irritabilité, fringales : le SPM classique. Sois douce avec toi.",
+                  "Garde une protection à portée de main : tes règles sont prévues dans quelques jours."],
+            .es: ["Tu regla se acerca: reduce la sal y la cafeína para aliviar la hinchazón.",
+                  "Senos sensibles, irritabilidad, antojos: el SPM clásico. Cuídate.",
+                  "Ten a mano una compresa o copa: tu regla llegará en unos días."],
+            .de: ["Deine Periode naht: weniger Salz und Koffein lindern Blähungen.",
+                  "Spannende Brüste, Reizbarkeit, Heißhunger — typisches PMS. Sei gut zu dir.",
+                  "Halte Binde oder Tasse bereit: deine Periode kommt in den nächsten Tagen."],
+            .pt: ["O teu período aproxima-se: reduz o sal e a cafeína para aliviar o inchaço.",
+                  "Seios sensíveis, irritabilidade, desejos: a TPM clássica. Cuida de ti.",
+                  "Tem um penso ou copo à mão: o teu período chega nos próximos dias."],
+        ],
     ]
 }
