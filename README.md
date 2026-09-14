@@ -32,13 +32,13 @@ provisioning profile, and `development` in a TestFlight build yields a token APN
 in silence), and Push is enabled on the App ID `company.lno.cycles`.
 
 Everything is gated on one constant — `OneSignalPush.appID` in
-`Cycles/OneSignalPush.swift`. While it is empty the SDK is never
-initialised: no registration, no network call, no permission prompt. Paste the App ID
-from onesignal.com ▸ Settings ▸ Keys & IDs to switch push on.
+`Cycles/OneSignalPush.swift`. Blank it out and the SDK is never
+initialised: no registration, no network call, no permission prompt.
 
 OneSignal carries Crazy Bee Labs announcements and app-update notices only; anything
 this app schedules for itself stays a local notification. A tap on a push can only open
 an `apps.apple.com` or `crazybeelabs.com` link — the payload is untrusted input.
 
-Still required server-side before any push is delivered: an APNs `.p8` key uploaded to
-the OneSignal app (Settings ▸ Platforms ▸ Apple iOS).
+The OneSignal app is live (App ID `39428403-ff46-4922-84c7-5908f619d0fb`, organisation **Crazy Bee
+Labs**) with the APNs `.p8` key `226GZ743S5` uploaded, so Settings ▸ Platforms ▸ Apple iOS
+reads *Active*. Nothing else is needed server-side.
