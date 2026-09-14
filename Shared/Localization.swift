@@ -274,6 +274,7 @@ enum L {
         "free_row_privacy":[.en: "Your health data stays private, on your device and iCloud.", .fr: "Tes données de santé restent privées, sur ton appareil et ton iCloud.", .es: "Tus datos de salud permanecen privados, en tu dispositivo e iCloud.", .de: "Deine Gesundheitsdaten bleiben privat, auf deinem Gerät und in iCloud.", .pt: "Os teus dados de saúde ficam privados, no teu dispositivo e no iCloud."],
         "free_row_suite":  [.en: "Brought to you by Crazy Bee Labs, alongside Pillo and Respire.", .fr: "Offerte par Crazy Bee Labs, aux côtés de Pillo et Respire.", .es: "Ofrecida por Crazy Bee Labs, junto a Pillo y Respire.", .de: "Präsentiert von Crazy Bee Labs, zusammen mit Pillo und Respire.", .pt: "Oferecida pela Crazy Bee Labs, ao lado de Pillo e Respire."],
         "free_link":       [.en: "Our commitment", .fr: "Notre engagement", .es: "Nuestro compromiso", .de: "Unser Versprechen", .pt: "O nosso compromisso"],
+        "free_other_apps": [.en: "Discover our other apps", .fr: "Découvrir nos autres apps", .es: "Descubre nuestras otras apps", .de: "Unsere anderen Apps entdecken", .pt: "Descobre as nossas outras apps"],
 
         // MARK: PMS
         "phase_pms":  [.en: "PMS", .fr: "SPM", .es: "SPM", .de: "PMS", .pt: "TPM"],

@@ -11,6 +11,8 @@ struct CommitmentView: View {
 
     private var lang: AppLanguage { AppLanguage(rawValue: languageRaw) ?? .en }
     private let commitmentURL = URL(string: "https://www.crazybeelabs.com/commitment")!
+    /// The studio's catalogue — the other free apps this one belongs to.
+    private let appsURL = URL(string: "https://www.crazybeelabs.com/apps")!
 
     private let rows: [(String, String)] = [
         ("checkmark.seal.fill", "free_row_ads"),
@@ -75,6 +77,24 @@ struct CommitmentView: View {
                         .foregroundStyle(Palette.rose)
                     }
                 }
+
+                // Second destination: the screen says Cycles belongs to a family of free apps,
+                // so it should also show where to find them.
+                Link(destination: appsURL) {
+                    HStack(spacing: 6) {
+                        Image(systemName: "square.grid.2x2.fill")
+                        Text(L.t("free_other_apps", lang))
+                        Image(systemName: "arrow.up.right")
+                            .font(.caption2.weight(.bold))
+                    }
+                    .font(.footnote.weight(.semibold))
+                    .foregroundStyle(Palette.rose)
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 10)
+                    .background(.ultraThinMaterial, in: Capsule())
+                    .overlay(Capsule().strokeBorder(Palette.rose.opacity(0.35), lineWidth: 1))
+                }
+                .padding(.top, 10)
 
                 Button {
                     onContinue?()
