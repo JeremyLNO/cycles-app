@@ -410,7 +410,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
-				INFOPLIST_KEY_CFBundleDisplayName = "Period tracker made easy";
+				INFOPLIST_KEY_CFBundleDisplayName = "Period tracker";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Period tracker made easy uses Face ID to keep your cycle data private.";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Period tracker made easy reads your period days from Apple Health so your cycle predictions stay accurate.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Period tracker made easy saves the period days you log to Apple Health.";
@@ -444,7 +444,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
-				INFOPLIST_KEY_CFBundleDisplayName = "Period tracker made easy";
+				INFOPLIST_KEY_CFBundleDisplayName = "Period tracker";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Period tracker made easy uses Face ID to keep your cycle data private.";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Period tracker made easy reads your period days from Apple Health so your cycle predictions stay accurate.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Period tracker made easy saves the period days you log to Apple Health.";
