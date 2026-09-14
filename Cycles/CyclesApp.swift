@@ -27,6 +27,9 @@ struct CyclesApp: App {
         if !args.contains("-skipNotifPrompt") {
             NotificationManager.shared.requestAuthorization()
         }
+
+        // 5. Crazy Bee Labs announcements (no-op until an App ID is configured).
+        OneSignalPush.start()
     }
 
     var body: some Scene {

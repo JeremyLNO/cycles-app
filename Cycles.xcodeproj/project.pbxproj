@@ -37,6 +37,8 @@
 		BD0000000000000000000004 /* SharedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000005 /* SharedStore.swift */; };
 		BD0000000000000000000005 /* WidgetContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000006 /* WidgetContent.swift */; };
 		BD0000000000000000000006 /* CycleEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000001 /* CycleEngine.swift */; };
+		68AEF96925176A7BC5BFA31F /* OneSignalFramework in Frameworks */ = {isa = PBXBuildFile; productRef = 8B6BD55EE42F80AD44AFC63C /* OneSignalFramework */; };
+		D6ABAB89A1AD23D13637B0D7 /* OneSignalPush.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9825DCB94FC303E9E5B14E0 /* OneSignalPush.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,7 @@
 		AB0000000000000000000005 /* SharedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedStore.swift; sourceTree = "<group>"; };
 		AB0000000000000000000006 /* WidgetContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetContent.swift; sourceTree = "<group>"; };
 		AC0000000000000000000001 /* CyclesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CyclesApp.swift; sourceTree = "<group>"; };
+		B9825DCB94FC303E9E5B14E0 /* OneSignalPush.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSignalPush.swift; sourceTree = "<group>"; };
 		AC0000000000000000000002 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		AC0000000000000000000003 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		AC0000000000000000000004 /* ProfilesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilesView.swift; sourceTree = "<group>"; };
@@ -100,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68AEF96925176A7BC5BFA31F /* OneSignalFramework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				AC0000000000000000000001 /* CyclesApp.swift */,
+				B9825DCB94FC303E9E5B14E0 /* OneSignalPush.swift */,
 				AC0000000000000000000002 /* HomeView.swift */,
 				AC0000000000000000000003 /* CalendarView.swift */,
 				AC0000000000000000000004 /* ProfilesView.swift */,
@@ -198,6 +203,9 @@
 				11000000000000000000A1 /* PBXTargetDependency */,
 			);
 			name = Cycles;
+			packageProductDependencies = (
+				8B6BD55EE42F80AD44AFC63C /* OneSignalFramework */,
+			);
 			productName = Cycles;
 			productReference = CC0000000000000000000001 /* Cycles.app */;
 			productType = "com.apple.product-type.application";
@@ -245,6 +253,9 @@
 				Base,
 			);
 			mainGroup = AA0000000000000000000002;
+			packageReferences = (
+				6161F05CA54220BECAC2D4D1 /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */,
+			);
 			productRefGroup = AA0000000000000000000003 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -271,6 +282,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6ABAB89A1AD23D13637B0D7 /* OneSignalPush.swift in Sources */,
 				BA0000000000000000000001 /* CyclesApp.swift in Sources */,
 				BA0000000000000000000002 /* HomeView.swift in Sources */,
 				BA0000000000000000000003 /* CalendarView.swift in Sources */,
@@ -318,6 +330,25 @@
 			targetProxy = 11000000000000000000A2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6161F05CA54220BECAC2D4D1 /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/OneSignal/OneSignal-XCFramework";
+			requirement = {
+				kind = exactVersion;
+				version = 5.5.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8B6BD55EE42F80AD44AFC63C /* OneSignalFramework */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6161F05CA54220BECAC2D4D1 /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */;
+			productName = OneSignalFramework;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCBuildConfiguration section */
 		EE0000000000000000000001 /* Debug */ = {

@@ -22,3 +22,21 @@ Voir [`AGENTS.md`](AGENTS.md) pour l'architecture, les conventions et les argume
 
 ## Avertissement
 Cycles fournit des **estimations** basées sur tes saisies. Ce n'est **pas** un dispositif médical ni une méthode de contraception.
+
+## Push notifications (OneSignal)
+
+The `OneSignal-XCFramework` Swift Package (pinned to **5.5.1**, only the
+`OneSignalFramework` product) is linked into the app target, the app declares
+`aps-environment`, and Push is enabled on the App ID `company.lno.cycles`.
+
+Everything is gated on one constant — `OneSignalPush.appID` in
+`Cycles/OneSignalPush.swift`. While it is empty the SDK is never
+initialised: no registration, no network call, no permission prompt. Paste the App ID
+from onesignal.com ▸ Settings ▸ Keys & IDs to switch push on.
+
+OneSignal carries Crazy Bee Labs announcements and app-update notices only; anything
+this app schedules for itself stays a local notification. A tap on a push can only open
+an `apps.apple.com` or `crazybeelabs.com` link — the payload is untrusted input.
+
+Still required server-side before any push is delivered: an APNs `.p8` key uploaded to
+the OneSignal app (Settings ▸ Platforms ▸ Apple iOS).
