@@ -17,3 +17,9 @@ xcuserdata/
 # Swift Package Manager
 .build/
 .swiftpm/
+
+# Les .xcframework vendorés embarquent leurs dSYMs, et leur Info.plist les déclare
+# (DebugSymbolsPath) : sans eux l'archive échoue. Le build local ne le voit pas —
+# les fichiers sont sur le disque, simplement jamais commités.
+!Vendor/**/*.dSYM
+!Vendor/**/*.dSYM/**
