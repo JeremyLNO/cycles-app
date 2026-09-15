@@ -21,7 +21,7 @@ concurrency:
 jobs:
   release:
     name: Archive & upload to TestFlight
-    runs-on: macos-15
+    runs-on: xcode-27
     timeout-minutes: 45
     if: ${{ vars.SKIP_TESTFLIGHT != 'true' }}
     steps:
@@ -32,6 +32,9 @@ jobs:
         # App Store Connect now rejects uploads built with an SDK older than
         # the current-year iOS SDK — the runner image's *default* Xcode lags
         # behind what's actually installed side-by-side on it.
+        # The `xcode-27` image (macOS 27 + Xcode 27, iphoneos27.0 SDK) carries
+        # a single Xcode, so this step is a no-op there — kept so the workflow
+        # still picks the newest toolchain if the image ever ships several.
         run: |
           latest=$(ls -d /Applications/Xcode_*.app 2>/dev/null | sort -V | tail -1)
           echo "Using $latest"
